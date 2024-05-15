@@ -2,5 +2,10 @@
 
 int main()
 {
-	return 0;
+    customer_t *cus;
+    create_customer(&cus);
+    show_customer_info(cus);
+    return 0;
 }
+
+
