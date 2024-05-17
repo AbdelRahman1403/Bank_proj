@@ -1,6 +1,24 @@
 
 #include "bank.h"
 
+return_status_t chick_id_customer(customer_t *customer[] , int ID){
+   return_status_t ret = N_OK;
+    if(*customer == NULL || ID == 0){
+        ret = N_OK;
+    }
+    else{
+        for(int i = 0; i < 3; i++){
+            if(customer[i]->ID == ID){
+                ret = OK;
+                break;
+            }
+            else{/*Nothing*/}
+        }
+    }
+    return ret;
+
+}
+
 /**
 
 */
@@ -47,3 +65,36 @@ return_status_t show_customer_info(customer_t *customer){
     }
     return ret;
 }
+
+return_status_t transfer_moeny(int *source_id , int *destination_id , double mouny){
+    return_status_t ret = OK;
+    if(source_id == NULL || destination_id == NULL){
+        ret = N_OK;
+    }
+    else{
+
+    }
+    return ret;
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

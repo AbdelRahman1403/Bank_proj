@@ -19,5 +19,6 @@ typedef struct {
 
 return_status_t create_customer(customer_t **customer);
 return_status_t show_customer_info(customer_t *customer);
+return_status_t transfer_moeny(int *source_id , int *destination_id , double mouny);
 
 #endif // BANK_H
