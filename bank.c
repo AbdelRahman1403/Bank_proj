@@ -1,6 +1,8 @@
 
 #include "bank.h"
-
+static void setColor(const char *color) {
+    printf("%s", color);
+}
 return_status_t chick_id_customer(customer_t *customer[] , int ID){
    return_status_t ret = N_OK;
     if(*customer == NULL || ID == 0){
@@ -36,9 +38,10 @@ return_status_t create_customer(customer_t **customer){
 
         printf("Enter The Name of Customer : ");
         scanf("%s" , cus->name);
+        fflush(stdin);
 
         printf("Enter The Salary of Customer : ");
-        scanf("%i" , &(cus->salary));
+        scanf("%f" , &(cus->salary));
         fflush(stdin);
 
         printf("Enter The type account of Customer : ");
@@ -58,21 +61,33 @@ return_status_t show_customer_info(customer_t *customer){
         ret = N_OK;
     }
     else{
+    setColor(BLUE);
     printf("The ID of customer is : %d\n" ,customer->ID);
     printf("The Name of customer is : %s\n" ,customer->name);
-    printf("The salary of customer is : %d\n" ,customer->salary);
+    printf("The salary of customer is : %.2f\n" ,customer->salary);
     printf("The Type of account of customer is : %s\n" ,customer->type_account);
     }
     return ret;
 }
 
-return_status_t transfer_moeny(int *source_id , int *destination_id , double mouny){
+return_status_t transfer_moeny(customer_t *cus1_source, customer_t *cus2_destination, float32 money){
     return_status_t ret = OK;
-    if(source_id == NULL || destination_id == NULL){
+    if(cus1_source == NULL || cus2_destination == NULL){
         ret = N_OK;
     }
     else{
-
+        if(cus1_source->salary >= money){
+            cus2_destination->salary+=money;
+            cus1_source->salary-=money;
+            setColor(GREEN);
+            printf("The process is successful , The money of the ID [ %i ] is %.2f ",cus2_destination->ID , cus2_destination->salary);
+            setColor(RESET);
+        }
+        else{
+            setColor(RED);
+            printf("The salary of ID [ %i ] not enough to send money to ID [ %i ]\n",cus1_source->ID,cus2_destination->ID);
+            setColor(RESET);
+        }
     }
     return ret;
 
