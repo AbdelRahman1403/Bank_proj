@@ -66,6 +66,7 @@ return_status_t show_customer_info(customer_t *customer){
     printf("The Name of customer is : %s\n" ,customer->name);
     printf("The salary of customer is : %.2f\n" ,customer->salary);
     printf("The Type of account of customer is : %s\n" ,customer->type_account);
+    setColor(RESET);
     }
     return ret;
 }
@@ -87,6 +88,40 @@ return_status_t transfer_moeny(customer_t *cus1_source, customer_t *cus2_destina
             setColor(RED);
             printf("The salary of ID [ %i ] not enough to send money to ID [ %i ]\n",cus1_source->ID,cus2_destination->ID);
             setColor(RESET);
+        }
+    }
+    return ret;
+
+}
+
+return_status_t change_data(customer_t *cus){
+    return_status_t ret = OK;
+    if(cus == NULL){
+        ret = N_OK;
+    }
+    else{
+        printf("which of data the customer need to change it ?\n");
+        printf(" 1- change the customer ID \n");
+        printf(" 2- change the customer Name\n");
+        printf(" 3- change the customer Salary \n");
+        printf(" 4- change the customer Type of the account \n");
+        printf("Enter the number of the choice : ");
+        int choice = 0;
+        scanf("%i" , &choice);
+
+        switch(choice){
+    case 1:
+        printf("Enter the new ID : ");
+        int ID = 0;
+        scanf("%i" , &ID);
+        cus->ID = ID;
+        break;
+    case 2:
+        printf("Enter the new Name : ");
+        char *Name;
+        scanf("%s" , Name);
+        strcpy(cus->name , Name);
+        break;
         }
     }
     return ret;

@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <windows.h>
 #include "Platform_Types.h"
 
 
@@ -27,5 +28,6 @@ typedef struct {
 return_status_t create_customer(customer_t **customer);
 return_status_t show_customer_info(customer_t *customer);
 return_status_t transfer_moeny(customer_t *cus1_source, customer_t *cus2_destination, float32 money);
+return_status_t change_data(customer_t *cus);
 
 #endif // BANK_H
