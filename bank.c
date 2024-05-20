@@ -37,7 +37,7 @@ return_status_t create_customer(customer_t **customer){
         fflush(stdin);
 
         printf("Enter The Name of Customer : ");
-        scanf("%s" , cus->name);
+        fgets(cus->name, sizeof(cus->name), stdin);
         fflush(stdin);
 
         printf("Enter The Salary of Customer : ");
@@ -104,23 +104,44 @@ return_status_t change_data(customer_t *cus){
         printf(" 1- change the customer ID \n");
         printf(" 2- change the customer Name\n");
         printf(" 3- change the customer Salary \n");
-        printf(" 4- change the customer Type of the account \n");
         printf("Enter the number of the choice : ");
-        int choice = 0;
+        sint8 choice = 0;
         scanf("%i" , &choice);
 
         switch(choice){
     case 1:
         printf("Enter the new ID : ");
-        int ID = 0;
+        sint8 ID = 0;
         scanf("%i" , &ID);
         cus->ID = ID;
+        setColor(GREEN);
+        printf("Done :)\n");
+        setColor(RESET);
         break;
     case 2:
         printf("Enter the new Name : ");
-        char *Name;
-        scanf("%s" , Name);
+        fflush(stdin);
+        uint8 Name[30];
+        fgets(Name, sizeof(Name), stdin);
         strcpy(cus->name , Name);
+        setColor(GREEN);
+        printf("Done :)\n");
+        setColor(RESET);
+        break;
+    case 3:
+        printf("Enter the new Salary : ");
+        sint8 Salary = 0;
+        scanf("%i" , &Salary);
+        cus->salary = Salary;
+        setColor(GREEN);
+        printf("Done :)\n");
+        setColor(RESET);
+        break;
+    default:
+        setColor(RED);
+        printf("Error!! Try Again\n");
+        setColor(RESET);
+        change_data(cus);
         break;
         }
     }
