@@ -107,7 +107,6 @@ return_status_t change_data(customer_t *cus){
         printf("Enter the number of the choice : ");
         sint8 choice = 0;
         scanf("%i" , &choice);
-
         switch(choice){
     case 1:
         printf("Enter the new ID : ");
