@@ -63,7 +63,7 @@ return_status_t show_customer_info(customer_t *customer){
     else{
     setColor(BLUE);
     printf("The ID of customer is : %d\n" ,customer->ID);
-    printf("The Name of customer is : %s\n" ,customer->name);
+    printf("The Name of customer is : %s" ,customer->name);
     printf("The salary of customer is : %.2f\n" ,customer->salary);
     printf("The Type of account of customer is : %s\n" ,customer->type_account);
     setColor(RESET);
@@ -147,7 +147,6 @@ return_status_t change_data(customer_t *cus){
     return ret;
 
 }
-
 
 
 
