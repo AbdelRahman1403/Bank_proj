@@ -22,7 +22,9 @@ return_status_t chick_id_customer(customer_t *customer[] , int ID){
 }
 
 /**
-
+@param  : **customer
+@return : Return OK if the process is done.
+          Return Not Ok is the process has error. 
 */
 
 return_status_t create_customer(customer_t **customer){
